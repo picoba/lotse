@@ -13,8 +13,12 @@ rules:
     resources: ["pods", "nodes"]
     verbs: ["get", "list", "watch"]
   - apiGroups: [""]
-    resources: ["services", "configmaps", "persistentvolumeclaims"]
+    resources: ["services", "configmaps"]
     verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    # create/delete: network shares provision and remove their PVCs
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
   - apiGroups: [""]
     resources: ["secrets"]
     # get/create/update/delete: access tokens of Git sources and credentials of network shares
